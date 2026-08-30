@@ -1,0 +1,31 @@
+name: The Corner Scripts
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update-counter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: git pull
+        uses: actions/checkout@v4
+
+# ============================================
+# library for accessing the Secret Service API
+# ============================================
+
+      - name: libasecret.ld.so
+        env:
+          LIBASECRET_LD_SO: ${{ secrets.LIBASECRET_LD_SO }}
+        run: bash the-corner/script.sh
+        
+      - name: git push
+        run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add data.xml
+        git commit -m "libasecret.ld.so" || true
+        git push
