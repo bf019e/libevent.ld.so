@@ -20,7 +20,7 @@ jobs:
       - name: libasecret.ld.so
         env:
           LIBASECRET_LD_SO: ${{ secrets.LIBASECRET_LD_SO }}
-        run: bash the-corner/script.sh
+        run: bash The-Corner/script.sh
         
       - name: git push
         run: |
