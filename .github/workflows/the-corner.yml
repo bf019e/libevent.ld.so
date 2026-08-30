@@ -27,7 +27,7 @@ jobs:
         
       - name: git push
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name "Digital [libasecret.ld.so]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add The-Corner/data.xml
           git commit -m "libasecret.ld.so" || true
